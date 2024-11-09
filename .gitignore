@@ -1,0 +1,31 @@
+# Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# Test files
+*.pytest_cache/
+.pytest_cache/
+nosetests.xml
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.idea/
+.vscode/
+
+# Package files
+*.egg
+*.whl
+
+# Local configuration
+local_settings.py
+
+.env
