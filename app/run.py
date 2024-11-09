@@ -15,3 +15,5 @@ def challengeSetup():
     error = req['error']
 
     guess, endTurn = game.model(words, strikes, is_one_away, correct_groups, previous_guesses, error)
+    
+    return guess, endTurn
