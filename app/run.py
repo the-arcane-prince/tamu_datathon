@@ -1,6 +1,9 @@
 
 from flask import Flask, request
 from game import game
+import dotenv
+
+dotenv.load_dotenv()
 
 app = Flask(__name__)
 
