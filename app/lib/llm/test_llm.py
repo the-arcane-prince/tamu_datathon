@@ -1,4 +1,4 @@
-from .llm import LLM
+from . import LLM
 
 def test_llm():
     llm = LLM()
