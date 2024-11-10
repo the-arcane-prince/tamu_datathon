@@ -3,6 +3,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 from .embeddings.embeddings import EmbeddingsModel
 from .embeddings.remote_embed import RemoteEmbeddingsModel
 from itertools import combinations
+from scipy.spatial import distance
+import numpy as np
+
 class WordAssociations:
     
     """
@@ -35,41 +38,23 @@ class WordAssociations:
         if not self.vector:
             temp  = await self.model.embed_many(words)
             self.vector = temp['embedding']
+        
+        combs = list(combinations([(word, i) for i, word in enumerate(words)], 4))
         similarity_df = await self.compute_word_associations(words)
         
-        # Convert the Polars DataFrame to a numpy array for easier access
-        similarity_matrix = similarity_df.to_numpy()
-
-        # List to store all possible word groups
-        similarity_groups = []
-
-        # Step 2: Find the top 4 similar words for each word and form groups
-        for i, word in enumerate(words):
-            similarities = similarity_matrix[i]
-            similarities[i] = -100  # Exclude the word's similarity to itself
+        group_combinations_sorted_by_distance = sorted([
+            (
+                comb,
+                np.mean([
+                    similarity_df[comb[i][1]][comb[j][1]]
+                    for i in range(4)
+                    for j in range(i + 1, 4)
+                ])
+            ) 
+            for comb in combs
+        ], key=lambda x: x[1], reverse=True)
             
-            # Get the indices of the top 4 most similar words
-            most_similar_indices = similarities.argsort()[-4:][::-1]
-            similar_words = [words[idx] for idx in most_similar_indices]
-            
-            # Add the group (set of 4 similar words) to the list
-            similarity_groups.append(similar_words)
-
-        # Step 3: Score the groups based on total pairwise similarities
-        group_scores = []
-        for group in similarity_groups:
-            score = 0
-            for word1, word2 in combinations(group, 2):  # Calculate pairwise similarity within the group
-                idx1 = words.index(word1)
-                idx2 = words.index(word2)
-                score += similarity_matrix[idx1, idx2]
-            group_scores.append((group, score))
-
-        # Step 4: Sort groups by their total similarity score in descending order
-        group_scores.sort(key=lambda x: x[1], reverse=True)
-
-
-        return [group for group, score in group_scores[:top_x]]
+        return group_combinations_sorted_by_distance[:top_x]
         
     
     """
@@ -98,5 +83,4 @@ class WordAssociations:
     Print the similarity matrix
     """
     def print_word_association_matrix(self, df: pl.DataFrame) -> None:
-        
         print(df)

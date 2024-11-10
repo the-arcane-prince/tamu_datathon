@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm
 
 BASE_URL = "https://dumps.wikimedia.org"
-WIKI_PROJECT = "simplewiki"  # Use "enwiki" for the full English Wikipedia
+WIKI_PROJECT = "enwiki"
 DUMP_TYPE = "latest"
 OUTPUT_DIR = "./wikipedia/wikipedia_sql_dumps"
 
@@ -38,7 +38,6 @@ def main():
         file_url = f"{BASE_URL}/{WIKI_PROJECT}/{DUMP_TYPE}/{WIKI_PROJECT}-{DUMP_TYPE}-{sql_file}"
         output_path = os.path.join(OUTPUT_DIR, sql_file)
 
-        # Download file if it doesn't already exist
         if not os.path.exists(output_path):
             print(f"Downloading {sql_file}...")
             download_file(file_url, output_path)

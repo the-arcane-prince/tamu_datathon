@@ -1,0 +1,124 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-8.3.3, pluggy-1.5.0
+rootdir: /home/neilshirsatmain/ai/tamu_datathon/app
+plugins: anyio-4.6.2.post1, asyncio-0.24.0
+asyncio: mode=strict, default_loop_scope=None
+collected 7 items
+
+lib/test_word_association.py Loaded Enviornment Variables from .dotenv
+Hello World
+.F
+lib/training_data/test_load_data.py shape: (517, 2)
+┌─────────────────────────────┬─────────────────────────────────┐
+│ category                    ┆ words                           │
+│ ---                         ┆ ---                             │
+│ str                         ┆ list[str]                       │
+╞═════════════════════════════╪═════════════════════════════════╡
+│ NBA TEAMS                   ┆ ["BUCKS", "HEAT", … "NETS"]     │
+│ UNITS OF LENGTH             ┆ ["FOOT", "LEAGUE", … "YARD"]    │
+│ SYNONYMS FOR EAT            ┆ ["CHOW", "GOBBLE", … "WOLF"]    │
+│ MUSICALS BEGINNING WITH “C” ┆ ["CABARET", "CAROUSEL", … "CHI… │
+│ CONDIMENTS                  ┆ ["KETCHUP", "MAYO", … "TARTAR"… │
+│ …                           ┆ …                               │
+│ THINGS WITH SHELLS          ┆ ["CLAM", "EGG", … "TURTLE"]     │
+│ GROUNDBREAKING              ┆ ["DIFFERENT", "NEW", … "ORIGIN… │
+│ PUBLIC STANDING             ┆ ["CHARACTER", "IMAGE", … "REPU… │
+│ KINDS OF PICKLES            ┆ ["DILL", "KOSHER", … "SWEET"]   │
+│ SMALLEST AMOUNT             ┆ ["LICK", "OUNCE", … "TRACE"]    │
+└─────────────────────────────┴─────────────────────────────────┘
+.shape: (517, 2)
+┌───────────────────────┬─────────────────────────────────┐
+│ category              ┆ words                           │
+│ ---                   ┆ ---                             │
+│ str                   ┆ list[str]                       │
+╞═══════════════════════╪═════════════════════════════════╡
+│ WET WEATHER           ┆ ["HAIL", "RAIN", … "SNOW"]      │
+│ FOOTWEAR              ┆ ["BOOT", "LOAFER", … "SNEAKER"… │
+│ FACIAL FEATURES       ┆ ["CHEEK", "EYE", … "NOSE"]      │
+│ SNEAKER BRANDS        ┆ ["ADIDAS", "NIKE", … "REEBOK"]  │
+│ STREAMING SERVICES    ┆ ["HULU", "NETFLIX", … "PRIME"]  │
+│ …                     ┆ …                               │
+│ THINGS THAT ARE FUZZY ┆ ["CATERPILLAR", "FLEECE", … "P… │
+│ DVR BUTTONS           ┆ ["PAUSE", "PLAY", … "STOP"]     │
+│ FOOD-RELATED JUMBLES  ┆ ["HASH", "SALAD", … "STEW"]     │
+│ ESCAPADE              ┆ ["ANTIC", "CAPER", … "STUNT"]   │
+│ CONTORTED             ┆ ["BENT", "GNARLY", … "WARPED"]  │
+└───────────────────────┴─────────────────────────────────┘
+.shape: (517, 2)
+┌─────────────────────────────┬─────────────────────────────────┐
+│ category                    ┆ words                           │
+│ ---                         ┆ ---                             │
+│ str                         ┆ list[str]                       │
+╞═════════════════════════════╪═════════════════════════════════╡
+│ KEYBOARD KEYS               ┆ ["OPTION", "RETURN", … "TAB"]   │
+│ MAGAZINES                   ┆ ["ESSENCE", "PEOPLE", … "US"]   │
+│ DOG BREEDS, INFORMALLY      ┆ ["LAB", "PEKE", … "POM"]        │
+│ CLEANING VERBS              ┆ ["DUST", "MOP", … "VACUUM"]     │
+│ SYNONYMS FOR SAD            ┆ ["BLUE", "DOWN", … "LOW"]       │
+│ …                           ┆ …                               │
+│ FIGURES IN “SHREK”          ┆ ["DONKEY", "DRAGON", … "PRINCE… │
+│ COMMUNICATE THROUGH WRITING ┆ ["CORRESPOND", "MESSAGE", … "W… │
+│ INFO ON A MUSEUM PLACARD    ┆ ["ARTIST", "MEDIUM", … "YEAR"]  │
+│ RISQUÉ                      ┆ ["ADULT", "BLUE", … "SUGGESTIV… │
+│ ALGEBRA TERMS               ┆ ["EXPONENT", "POWER", … "ROOT"… │
+└─────────────────────────────┴─────────────────────────────────┘
+.shape: (517, 2)
+┌─────────────────────────────────┬─────────────────────────────────┐
+│ category                        ┆ words                           │
+│ ---                             ┆ ---                             │
+│ str                             ┆ list[str]                       │
+╞═════════════════════════════════╪═════════════════════════════════╡
+│ PALINDROMES                     ┆ ["KAYAK", "LEVEL", … "RACE CAR… │
+│ LETTER HOMOPHONES               ┆ ["ARE", "QUEUE", … "WHY"]       │
+│ MEMBERS OF A TRIO               ┆ ["AMIGO", "KING", … "TENOR"]    │
+│ ___ MAN SUPERHEROES             ┆ ["BAT", "IRON", … "SUPER"]      │
+│ CLUE CHARACTERS                 ┆ ["GREEN", "MUSTARD", … "SCARLE… │
+│ …                               ┆ …                               │
+│ MAGIC ___                       ┆ ["CARPET", "KINGDOM", … "MUSHR… │
+│ THINGS WITH FEET                ┆ ["BIPED", "FURNITURE", … "YARD… │
+│ ANAGRAMS OF FAMOUS PAINTERS     ┆ ["DIAL", "EGADS", … "YOGA"]     │
+│ CUT THE ___                     ┆ ["CHEESE", "CORD", … "MUSTARD"… │
+│ WORDS BEFORE “ROOM” TO MEAN LA… ┆ ["BATH", "POWDER", … "THRONE"]  │
+└─────────────────────────────────┴─────────────────────────────────┘
+.shape: (2_068, 2)
+┌─────────────────────────────────┬─────────────────────────────────┐
+│ category                        ┆ words                           │
+│ ---                             ┆ ---                             │
+│ str                             ┆ list[str]                       │
+╞═════════════════════════════════╪═════════════════════════════════╡
+│ NBA TEAMS                       ┆ ["BUCKS", "HEAT", … "NETS"]     │
+│ UNITS OF LENGTH                 ┆ ["FOOT", "LEAGUE", … "YARD"]    │
+│ SYNONYMS FOR EAT                ┆ ["CHOW", "GOBBLE", … "WOLF"]    │
+│ MUSICALS BEGINNING WITH “C”     ┆ ["CABARET", "CAROUSEL", … "CHI… │
+│ CONDIMENTS                      ┆ ["KETCHUP", "MAYO", … "TARTAR"… │
+│ …                               ┆ …                               │
+│ MAGIC ___                       ┆ ["CARPET", "KINGDOM", … "MUSHR… │
+│ THINGS WITH FEET                ┆ ["BIPED", "FURNITURE", … "YARD… │
+│ ANAGRAMS OF FAMOUS PAINTERS     ┆ ["DIAL", "EGADS", … "YOGA"]     │
+│ CUT THE ___                     ┆ ["CHEESE", "CORD", … "MUSTARD"… │
+│ WORDS BEFORE “ROOM” TO MEAN LA… ┆ ["BATH", "POWDER", … "THRONE"]  │
+└─────────────────────────────────┴─────────────────────────────────┘
+.
+
+=================================== FAILURES ===================================
+____________________________ test_word_association _____________________________
+
+    @pytest.mark.asyncio
+    async def test_word_association():
+        num = 20
+        bigarr = []
+        rightans = []
+        with open('/home/neilshirsatmain/ai/tamu_datathon/data.json', 'r') as file:
+            data = json.load(file)
+            for x in range (num):
+                words = []
+                for entry in data[x]:
+                    words.extend(entry['words'])
+                bigarr.append(words)
+>       with open('data_yellow.json',"r") as file:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'data_yellow.json'
+
+lib/test_word_association.py:23: FileNotFoundError
+=========================== short test summary info ============================
+FAILED lib/test_word_association.py::test_word_association - FileNotFoundErro...
+========================= 1 failed, 6 passed in 1.13s ==========================
