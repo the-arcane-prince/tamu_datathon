@@ -7,13 +7,14 @@ class WordAssociations:
     Create and initialize the model and 
     """
     def __init__(self):
-        self.model = AutoModel.from_pretrained("jinaai/jina-embeddings-v3", trust_remote_code=True)
+        self.model = AutoModel.from_pretrained("jinaai/reader-lm-0.5b", trust_remote_code=True)
     
     """
     Generate an embedding for the following word and print the vector result
     """
     def compute_embeddings(self, word: str) -> str:
         return self.model.encode(word, task="text-matching")
+
 
     """
     A list ranking words by their average similarity to the other words
