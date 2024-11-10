@@ -7,25 +7,35 @@ def test_sample():
     print("Hello World")
 
 async def test_word_association():
-    
+    num = 20
     bigarr = []
+    rightans = []
     with open('data.json', 'r') as file:
         data = json.load(file)
         
 
         
-        num = 3
+        
         for x in range (num):
             words = []
             for entry in data[x]:
                 words.extend(entry['words'])
             bigarr.append(words)
+    with open('data_yellow.json',"r") as file:
+        data = json.load(file)
+        for x in range (num):
+            rightans.append(data[x]["words"])
     print(bigarr)
-    for arr in bigarr:
+    for x in range(num):
+        arr = bigarr[x]
+        print("Correct answer:")
+        print(rightans[x])
         x = wa.WordAssociations()
-        ans = await x.compute_word_associations(arr)
-        x.print_word_association_matrix(ans)
 
+        ans = await x.get_most_similar_words(arr,5)
+        print("Top 5 guesses")
+        for i in ans:
+            print(i)
         
 #     ans = await x.get_similarity_rankings([
 #     "BLUES", "COUNTRY", "FOLK", "ROCK",  # Music genres
