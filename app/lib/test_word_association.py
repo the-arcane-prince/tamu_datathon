@@ -1,5 +1,5 @@
 import pytest
-import word_association as wa
+from . import word_association as wa
 
 def test_sample():
     print("Hello World")
