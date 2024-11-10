@@ -61,4 +61,3 @@ with open("data.json", 'w') as json_file:
                 json_file.write(", \n")
             
     json_file.write("]")
-        
