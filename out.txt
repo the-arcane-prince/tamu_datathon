@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-8.3.3, pluggy-1.5.0
+rootdir: /home/neilshirsatmain/ai/tamu_datathon
+plugins: anyio-4.6.2.post1, asyncio-0.24.0
+asyncio: mode=strict, default_loop_scope=None
+collected 1 item / 1 error
+
+==================================== ERRORS ====================================
+________________ ERROR collecting app/lib/test_wikipedia_api.py ________________
+ImportError while importing test module '/home/neilshirsatmain/ai/tamu_datathon/app/lib/test_wikipedia_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+app/lib/test_wikipedia_api.py:1: in <module>
+    from . import wikipedia_api
+app/lib/wikipedia_api.py:1: in <module>
+    from app.lib.embeddings.remote_embed import RemoteEmbeddingsModel
+E   ModuleNotFoundError: No module named 'app'
+=========================== short test summary info ============================
+ERROR app/lib/test_wikipedia_api.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.74s ===============================
