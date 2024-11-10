@@ -21,9 +21,7 @@ class WordAssociations:
         if not self.vector:
             temp  = await self.model.embed_many(words)
             self.vector = temp['embedding']
-        print(self.vector)
         similarity_matrix = cosine_similarity(self.vector)
-        print(similarity_matrix)
         avg_similarities = similarity_matrix.mean(axis=1)
 
         ranked_words = [word for _, word in sorted(zip(avg_similarities, words), reverse=True)]
@@ -33,18 +31,33 @@ class WordAssociations:
     """
     A four element list of the most similar words in the dataset
     """
-    def get_most_similar_words(self, words: list[str]) -> list[str]:
-        if(self.vector==[]):
-            self.vector = self.model.embed_many(words)
+    async def get_most_similar_words(self, words: list[str]) -> list[str]:
+        if not self.vector:
+            temp  = await self.model.embed_many(words)
+            self.vector = temp['embedding']
         pass
     
     """
     Given a list of words create a matrix that gives the similarity
     score between two words
     """
-    def compute_word_associations(self, words: list[str]) -> pl.DataFrame:
-        if self.vector == []:
-            self.vector = self.model.embed_many(words)
+    async def compute_word_associations(self, words: list[str]) -> pl.DataFrame:
+        if not self.vector:
+            temp  = await self.model.embed_many(words)
+            self.vector = temp['embedding']
+        similarity_matrix = cosine_similarity(self.vector)
+        # Convert the numpy similarity matrix into a Polars DataFrame
+        # Convert the matrix into a list of lists and use the words as both row and column labels
+
+        # Convert the numpy similarity matrix into a Polars DataFrame
+        similarity_df = pl.DataFrame(similarity_matrix.tolist())
+
+        # Set the column names directly by using words as column names
+        similarity_df.columns = [str(word) for word in words]  # Set column names as strings
+        similarity_df.rows = [str(word) for word in words]
+        # Optionally, you can also rename the rows, if necessary, by using the same word list
+
+        return similarity_df
     
     """
     Print the similarity matrix
