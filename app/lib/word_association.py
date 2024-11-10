@@ -1,5 +1,6 @@
 import polars as pl
-from transformers import AutoModel
+from .embeddings.embeddings import EmbeddingsModel
+from .embeddings.remote_embed import RemoteEmbeddingsModel
 
 class WordAssociations:
     
@@ -7,13 +8,7 @@ class WordAssociations:
     Create and initialize the model and 
     """
     def __init__(self):
-        self.model = AutoModel.from_pretrained("jinaai/jina-embeddings-v3", trust_remote_code=True)
-    
-    """
-    Generate an embedding for the following word and print the vector result
-    """
-    def compute_embeddings(self, word: str) -> str:
-        return self.model.encode(word, task="text-matching")
+        self.model = EmbeddingsModel(RemoteEmbeddingsModel("clustering", "models/embedding-001"))
 
     """
     A list ranking words by their average similarity to the other words
@@ -39,4 +34,3 @@ class WordAssociations:
     """
     def print_word_association_matrix(self, df: pl.DataFrame) -> None:
         print(df)
-        
