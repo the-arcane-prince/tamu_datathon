@@ -36,7 +36,10 @@ def scrape_next_data(url):
     except json.JSONDecodeError as e:
         print("Error parsing JSON:", e)
         return None
+<<<<<<< HEAD
+=======
 
+>>>>>>> 45bd3519bec2befa58e8ed6299f8a3951fdb638b
 # Example usage
 url = "https://connections.swellgarfo.com/nyt/"
 
@@ -61,4 +64,8 @@ with open("data.json", 'w') as json_file:
                 json_file.write(", \n")
             
     json_file.write("]")
+<<<<<<< HEAD
         
+=======
+        
+>>>>>>> 45bd3519bec2befa58e8ed6299f8a3951fdb638b
