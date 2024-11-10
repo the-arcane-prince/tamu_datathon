@@ -29,3 +29,6 @@ dist/
 local_settings.py
 
 .env
+.models
+wikipedia_sql_dumps
+models
