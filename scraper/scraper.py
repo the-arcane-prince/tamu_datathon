@@ -38,16 +38,26 @@ def scrape_next_data(url):
         return None
 # Example usage
 url = "https://connections.swellgarfo.com/nyt/"
-data = scrape_next_data(url+"516")
 
-if data:
-    key_mapping = {"description":"category"}
-    color_mapping = {"#69e352":"green","#fbd400":"yellow","#5492ff":"blue","#df7bea":"purple"}
-    for x in range(len(data)):
-        data[x] = {key_mapping.get(k, k): v for k, v in data[x].items()}
-        data[x]["color"] = color_mapping[data[x]["color"]]
-        data[x].pop("emoji")
-    
-    jsondata = json.dumps(data, indent=4) # Pretty-print the JSON data
-    print(jsondata)
-    
+with open("data.json", 'w') as json_file:
+
+    json_file.write("[")
+    for xx in range(517):
+
+        x = xx+1
+        print(x)
+        data = scrape_next_data(url+str(x))
+        if data:
+            key_mapping = {"description":"category"}
+            color_mapping = {"#69e352":"green","#fbd400":"yellow","#5492ff":"blue","#df7bea":"purple"}
+            for x in range(len(data)):
+                data[x] = {key_mapping.get(k, k): v for k, v in data[x].items()}
+                data[x]["color"] = color_mapping[data[x]["color"]]
+                data[x].pop("emoji")
+            x = xx+1
+            json.dump(data, json_file, indent=4) # Pretty-print the JSON data
+            if(x<517) :
+                json_file.write(", \n")
+            
+    json_file.write("]")
+        
